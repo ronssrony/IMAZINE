@@ -24,8 +24,15 @@ const server = http.createServer(app) ;
 const socket = require("./services/socketio")
 
 socket.init(server) 
+const allowOrigin = ['http://localhost:5173','https://imazineblue.onrender.com']
 const corsOptions = {
-  origin: 'http://localhost:5173' ,
+  origin: (origin, callback) => {
+    if (allowOrigin.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
 };
 

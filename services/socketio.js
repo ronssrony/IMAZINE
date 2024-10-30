@@ -3,11 +3,18 @@ const socketIO = require('socket.io');
 let io;
 
 module.exports = {
-  
+
     init: function (server) {
+     const allowOrigin = ['http://localhost:5173','https://imazineblue.onrender.com']
         io = socketIO(server, {  
             cors:{
-                origin:'http://localhost:5173' ,
+                origin:(origin, callback) => {
+                    if (allowOrigin.includes(origin) || !origin) {
+                      callback(null, true);
+                    } else {
+                      callback(new Error('Not allowed by CORS'));
+                    }
+                  }, 
                 methods:["GET", "POST"] , 
                 credentials:true 
               }
