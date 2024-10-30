@@ -1,0 +1,81 @@
+<%- include('./partial/header') %>
+<div class="fixed w-full h-96  flex max-lg:flex-col  flex  ">
+  <div class="lg:w-1/2 md:w-full min-w-fit md:h-96  max-sm:h-60  h-96 p-5  ">
+      <a href="/" class="w-full h-full relative">
+          <img class="w-3/2 h-2/5 object-cover" src="/images/bg/darklogo.png" alt="">
+      </a>
+      <div class="flex text-black gap-5 mt-2 infowala ">
+   
+          <div class="   text-black  flex gap-2 min-w-fit justify-around  relative lg:hidden z-20  "> 
+              <a class="" href="/owner">Admin</a>
+          <a href="text-black" class="">News</a>
+          <a href="text-black" class="">Help</a>
+        </div>
+      </div>
+ <div class="flashmsg bg-black text-white max-w-96">
+        <%if(success_msg){%>
+          <h1 class=" success"><%=success_msg%></h1>
+        <%}%>
+        <%if(error_msg){%>
+        <h1 class="error"><%=error_msg%></h1>
+        <%}%>
+      </div>
+  </div>
+
+  <div class="xl:flex lg:flex-col md:flex-col max-md:flex-col xl:flex-row  ">
+    <div class="searchwala max-md:py-10 max-md:px-5 max-sm:px-0 md:py-10 opacity-0 md:px-5 max-sm:w-full max-lg:w-full  md:w-96 max-md:w-96 h-20 relative flex md:mr-2  relative max-sm:absolute max-lg:absolute max-md:absolute max-md:top-40 max-lg:top-40 max-sm:top-28 ">
+      <input type="search" size="45" autocomplete="off" name="search" class="absolute max-sm:w-full  p-1 max-sm:border max-sm:border-black outline-none max-sm:bg-transparent bg-white border border-black"> <label for="search" class="right-0 absolute p-1 opacity-60 font-light max-sm:text-black">SEARCH</label>
+  </div>
+  <div class="lg:ml-10 md:ml-10 max-sm:w-60 max-md:w-72 w-56  h-20 text-black  py-10 px-2 flex justify-around  relative max-lg:hidden"> 
+    <a  href="/owner">Admin </a>
+    <a href="">News</a>
+    <a href="">Help</a>
+  </div>
+  </div>
+ 
+</div>
+<div class="main ml-12 pt-28  max-lg:ml-0 max-lg:pt-40 max-lg:flex-col-reverse max-lg:items-start  flex  items-center justify-start gap-40 font-['Joan'] font-light">
+   
+    <div class="singup w-2/6 min-w-fit h-72 absolute mt-14 max-lg:mt-0 p-10  flex flex-col items-start justify-center relative pt-20 max-lg:hidden " >
+        <h1 class=" text-xl self-start tracking-tighter font-extralight ">Create An Account</h1>
+     <form action="/user/create" method="post" class="self-start mt-5 w-full">
+        <input name="fullname" type="text" autocomplete="off" placeholder="Full Name" class="bg-transparent block p-2 w-full  bg-transparent mb-4 outline-none  border-b border-black" >
+        <input name="email" type="email" autocomplete="off"  placeholder="Email" class="bg-transparent block p-2 w-full  bg-transparent mb-4 outline-none  border-b border-black" required>
+        <input name="password" type="password" autocomplete="off"  placeholder="Password" class="bg-transparent block p-2 w-full  bg-transparent mb-4 outline-none  border-b border-black" required>
+        <input type="submit" value="Create my account" class=" text-black px-5 py-2 mt-5 border border-black cursor-pointer active:border-none "> <a class="sidelogin ml-10 inline-block lg:hidden" href="">Log in</a> 
+     </form>
+    
+      </div>
+
+      <div class="w-12 ">
+        <h1 class="text-xl border border-black text-center rounded-3xl p-2 text-black tracking-wider max-lg:hidden">or</h1>
+      </div>
+
+      <div class="login w-2/6 h-72 min-w-fit absolute top-0 p-10  flex flex-col items-start justify-center relative pt-20">
+        <h1 class="text-xl self-start ">Login your account</h1>
+     <form action="/user/login" method="post" class="self-start mt-5 w-full">
+        <input name="email" type="email" autocomplete="off"  placeholder="Email" class="  block  p-2 w-full  mb-4 outline-none bg-transparent border-b border-black" required>
+        <input name="password" type="password" autocomplete="off"  placeholder="Password" class="  block p-2 w-full mb-3 outline-none bg-transparent border-b border-black" required>
+       <div class=" flex  gap-3"> 
+         <a href="/auth/google" class="border border-black px-1"><i class="ri-google-line text-xl"></i></a>
+         <a href="/auth/facebook" class="border border-black px-1"> <i class="ri-facebook-line text-xl"></i> </a>
+         <a href="/auth/twitter" class="border border-black px-1"> <i class="ri-twitter-x-line text-xl"></i> </a>
+      </div>
+        <input type="submit" value="Login" class="border border-black cursor-pointer active:border-none  text-black px-5 py-2 mt-5 "> <a class="needaccount ml-10 inline-block lg:hidden" href="">Need An Account?</a>
+     </form>
+    
+      </div>
+
+</div>
+<div class="font-['Joan'] font-light p-10 max-sm:w-3/2  md:w-2/5 lg:mt-16 ">
+  <h1 class="text-xl ">Join NewsLetter</h1>
+  <form action="">
+    <input name="email" type="email" autocomplete="off"  placeholder="Email" class="  block  p-2 w-full  mb-2 outline-none border-b border-black" required>
+    <button type="submit" class=" font-['Joan'] font-light ">Follow<i class="ri-newspaper-line"></i></button>
+  </form>
+</div>
+
+  <script src="/javascripts/registration.js"></script>
+
+
+

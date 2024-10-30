@@ -1,0 +1,31 @@
+.flashmsg{
+    width: 0;
+    white-space: nowrap;
+    animation: flashmessage;
+    animation-duration: 3s;
+    animation-timing-function: all ease-in-out;
+    
+}
+
+
+@keyframes flashmessage {
+    0%{
+        width: 0;
+    }
+    10%{
+        width: 0;
+    }
+    30%{
+        width: 100%;
+        transform-origin: left;
+    }
+    80%{
+        width: 100%;
+        transform-origin: left;
+    }
+    100%{
+        width: 0;
+
+    }                                                                    
+    
+}

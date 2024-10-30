@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAZN</title>
+   <link rel="icon" type="image/x-icon" href="/images/favicon/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/stylesheets/home.css">
+</head>
+<body class="no-scrollbar font-['Helvetica', 'Times New Roman', 'sans-serif']" >
+    <div class="fixed w-full h-96  flex max-lg:flex-col  flex  z-10 ">
+        <div class="lg:w-1/2 md:w-full min-w-fit md:h-96  max-sm:h-60  h-96 p-5  ">
+            <a href="/" class="w-full h-full relative">
+                <img class="w-3/2 h-2/5 object-cover" src="/images/bg/logo.png" alt="">
+            </a>
+            <div class="flex text-white gap-5 mt-2 relative z-10">
+                <a href="/collection/woman">Woman</a>
+                <a href="/collection/man">Man</a>
+                <a href="/collection/kid">Kids</a>
+                <div class=" ml-10 max-sm:ml-5 text-white  flex gap-2 min-w-fit justify-around  relative lg:hidden  "> 
+                 <%if(user){%>
+            <a class="" href="/user/logout">Log Out</a>
+            <%}else {%>
+              <a class="" href="/user/registration">Log In</a>
+              <%}%>
+                <a href="" class="">News</a>
+                <a href="" class="">Help</a>
+              </div>
+            </div>
+        </div>
+
+        <div class="xl:flex lg:flex-col md:flex-col max-md:flex-col xl:flex-row  ">
+          <form class="searchwala max-md:py-10 max-md:px-5 max-sm:px-0 md:py-10 md:px-5 max-sm:w-full max-lg:w-full  md:w-96 max-md:w-96 h-20 relative flex md:mr-2  relative max-sm:absolute max-lg:absolute max-md:absolute max-md:top-40 max-lg:top-40 max-sm:top-28 ">
+            <input type="search" size="45" autocomplete="off" name="search" class="absolute max-sm:w-full  p-1 max-sm:border max-sm:border-white outline-none max-sm:bg-transparent"> <label for="search" class="right-0 absolute p-1 opacity-60 font-light max-sm:text-white">SEARCH</label>
+          </form>
+        <div class="lg:ml-10 md:ml-10 max-sm:w-60 max-md:w-72 w-56  h-20 text-white  py-10 px-2 flex justify-around  relative max-lg:hidden"> 
+          <%if(user){%>
+            <a class="" href="/user/logout">Log Out</a>
+            <%}else {%>
+              <a class="" href="/user/registration">Log In</a>
+              <%}%>
+          <a href="">News</a>
+          <a href="">Help</a>
+        </div>
+        </div>
+       
+    </div>
+
+    <div class="w-full h-auto relative -z-10" >
+        <div class="slider w-full relative">
+            <picture class="w-full one  ">
+                <img class="w-full h-screen object-cover   max-xl:object-left" src="/images/bg/first.jpg" alt="">
+              </picture> 
+              <picture class="w-full">
+                <img class="w-full h-screen object-cover " src="/images/bg/second.jpg" alt="">
+              </picture>
+              <picture class="w-full">
+                <img class="w-full h-screen object-cover max-xl:object-left" src="/images/bg/third.jpg" alt="">
+              </picture>
+              <picture class="w-full">
+                <img class="w-full h-screen object-cover" src="/images/bg/fourth.jpg" alt="">
+              </picture>
+              <picture class="w-full">
+                <img class="w-full h-screen object-cover max-xl:object-left" src="/images/bg/fifth.jpg" alt="">
+              </picture>
+              <picture class="w-full">
+                <img class="w-full h-screen object-cover max-xl:mr-20 max-xl:object-left" src="/images/bg/sixth.jpg" alt="">
+              </picture>
+              <picture class="w-full">
+                <img class="w-full h-screen object-cover max-xl:object-right" src="/images/bg/seventh.jpg" alt="">
+              </picture>
+              <picture class="w-full">
+                <img class="w-full h-screen object-cover max-xl:object-right" src="/images/bg/eighth.jpg" alt="">
+              </picture>
+        </div>
+    </div>
+    <div class="searchbox fixed flex flex-col items-center bg-white gap-4 max-sm:w-full  lg:top-20 lg:w-96 lg:right-64 lg:gap-4   max-sm:top-48 p-2 overflow-y-hidden hidden z-20">      
+    </div>
+    <script src="/javascripts/home.js"></script>
+</body>
+</html>

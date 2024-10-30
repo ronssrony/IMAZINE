@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="font-['helvetica_now_display']  text-black h-screen w-full">
+
+      <nav class="pt-10 px-5 tracking-tighter flex justify-between w-full items-center ">
+        <h1 class="text-3xl ml-5">Admin Panel.</h1>
+        <div class="right flex gap-20 mr-20">
+            <div class="first flex gap-5">
+                <a class= "text-lg" href="">Home</a>
+                <a class= "text-lg" href="">Products</a>
+            </div>
+            <div class="second flex gap-5">
+                <a class="text-lg" href="">My account</a>
+            </div>
+        </div>
+      </nav>
+      <div class="line w-full h-0.5 bg-stone-500 mt-2"></div>
+      
+      <div class="container flex w-full h-5/6">
+        <div class="sidebar w-1/6 h-5/6  mt-4 ml-5 pt-5 px-5 flex flex-col items-start justify-between " >
+            <div class="portion flex flex-col items-start gap-10 ">
+                <div class="">
+                    <a class=" text-lg block text-stone-600" href="">All Products</a>
+                    <a  class=" text-lg block text-stone-600" href="/owner/new/product">Create New Product</a>
+                </div>
+            </div>  
+            <div>
+                <a class=" text-lg block text-stone-600" href="/owner/logout">logout</a>
+            </div>
+      </div>
+
+
+      <div class="products  flex flex-wrap  max-w-content h-96  border-t border-black ">
+        <%products.forEach(function(product){%>
+
+          <div class="product lg:w-1/6 md:w-1/4 max-sm:w-1/2 relative   max-sm:min-w-44  min-w-56 h-full  border-b border-r border-black">
+           <a href="/product/<%=product._id%>" class="">
+              <img class="w-full h-5/6 object-cover g-red-300 " src="/images/uploads/<%=product.image%>" alt="">
+           </a>
+           <div class="h-1/6 text-sm text-extralight p-2 flex w-full justify-between">
+             <a href="/product/<%=product._id%>">
+               <h1><%if(product.name.length>23){ var name = product.name.slice(0,26)+"..."} else{var name=product.name}%><%=name%></h1>
+               <h1>BDT  <span class="font-[sans-serif]"><%=product.price%></span></h1>
+             </a>
+             <div  class=" px-3 rounded-3xl flex h-full justify-between  flex-col items-center">
+              <a href="/product/edit/<%=product._id%>"  class=" text-lg text-[<%= product.textcolor%>] underline " id="<%=product._id%>" >Edit</a>
+              <a href="/product/delete/<%=product._id%>"  class=" text-lg text-black underline " id="<%=product._id%>" >Delete</a>
+            </div>
+           </div>
+          </div>
+
+          <%})%>
+ </div>
+
+
+</body>
+</html>

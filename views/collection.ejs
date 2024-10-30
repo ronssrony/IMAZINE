@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" style=" scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=collection%> Collection</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/stylesheets/collection.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Joan&display=swap" rel="stylesheet">
+</head>
+<body class="no-scrollbar text-black font-['Joan'] font-light " >
+    <div class="fixed w-full h-60  flex max-lg:flex-col  flex  z-10  overflow-y-hidden">
+        <div class="lg:w-1/2 md:w-full min-w-fit md:h-96  max-sm:h-60  h-96 p-5 max-sm:p-3  ">
+            <a href="/" class="w-full h-full relative">
+                <img class="w-3/2 h-2/5 object-cover" src="/images/bg/darklogo.png" alt="">
+            </a>
+            <div class="flex text-black gap-5 mt-2 infowala relative z-10 ">
+                <a class="triggercollection border border-black py-1 px-2 min-w-fit " href="">Collection</a>
+                <div class=" collection hidden lg:left-56 max-sm:-bottom-[90px] max-sm:text-sm   absolute h-full flex justify-start md:min-w-full  ">
+                  <button id="tshirt" class="tshirt border border-black py-1 px-2  max-lg:px-1">T-shirt</button>
+                  <button id="shirt" class="shirt border border-black py-1 px-2 max-lg:px-1">Shirt</button>
+                  <button id="jacket" class="jacket border border-black py-1 px-2 max-lg:px-1">Jacket</button>
+                  <button id="jeans" class="jeans border border-black py-1 px-2 max-lg:px-1">Jeans</button>
+                  <button id="shoe" class="shoe border border-black py-1 px-2 max-lg:px-1">Shoe</button>
+                  <button id="accessories" class="accessories border border-black py-1 px-2">Accessories</button>
+                  <button id="bag" class="bag border border-black py-1 px-2">Bag</button>
+                </div>
+                <a class="triggerfilter border border-black py-1 px-2  min-w-fit" href="/collection/man">View All</a>
+                <div class="  filter hidden lg:left-56  max-sm:-bottom-[90px] max-sm:text-sm  absolute h-full flex justify-start ">
+                  <button id="price" class="price border border-black py-1 px-2">Price</button>
+                  <button id="color" class="color border border-black py-1 px-2">Color</button>
+                  <button id="size" class="size border border-black py-1 px-2">Size</button>
+                </div>   
+                <div class="priceindicator absolute lg:left-[400px] max-sm:right-2 max-sm:translate-y-[93px] max-sm:w-44   max-sm:text-sm lg:w-96  -top-3 hidden ">
+                  <input id="balance" type="range" min="0" max="100000" step="1000" class="slider w-full  " list="balance" value="1000000">
+                  <datalist id="balance" class="flex justify-between text-sm">
+                    <option value="0" label="0"></option>
+                    <option value="25000" label="25k"></option>
+                    <option value="50000" label="50k"></option>
+                    <option value="75000" label="75k"></option>
+                    <option value="1000000" label="100k"></option>
+                  </datalist>
+                </div>
+                <div class="colorindicator absolute lg:left-[400px] lg:w-96  max-sm:translate-y-[78px] max-sm:w-44 max-sm:right-2 max-sm:flex-wrap max-sm:text-sm top-1  flex items-center gap-2 hidden  ">
+                   <button id="black" class="flex gap-1 items-center "> <div class="w-4 h-4 bg-black"></div> Black </button>
+                   <button id="white" class="flex gap-1 items-center"> <div class="w-4 h-4 bg-white border border-black"></div> White </button>
+                   <button id="blue" class="flex gap-1 items-center"> <div class="w-4 h-4 " style="background-color: cornflowerblue;"></div> Blue </button>
+                   <button id="red" class="flex gap-1 items-center"> <div class="w-4 h-4 bg-red-500"></div> Red </button>
+                   <button id="orange" class="flex gap-1 items-center"> <div class="w-4 h-4 bg-orange-500"></div> Orange </button>
+                </div>
+                <div class="sizeindicator absolute lg:left-[400px] lg:w-96 max-sm:translate-y-[80px]  max-sm:w-56 max-sm:w-full max-sm:bg-white max-sm:text-md max-sm:py-2  max-sm:flex-wrap  top-1.5 text-sm  flex items-center gap-4  hidden ">
+                  <button id="sm" class="flex gap-1 items-center  border border-black px-1 ">SM/36</button>
+                  <button id="md" class="flex gap-1 items-center border border-black px-1 ">MD/38</button>
+                  <button id="lg" class="flex gap-1 items-center  border border-black px-1">LG/40</button>
+                  <button id="xl" class="flex gap-1 items-center border border-black px-1">XL/42</button>
+                  <button id="xll" class="flex gap-1 items-center border border-black px-1">XLL/44</button>
+               </div>
+                <div class="   text-black  flex gap-2 min-w-fit justify-around  relative lg:hidden  "> 
+                    <a href="/user/cart">Cart <%if(cart>0){%>
+                        <span class="font-[serif]">(<%=cart%>)</span>
+                 <%}%> </a>
+                <a href="text-black" class="">News</a>
+                <a href="text-black" class="">Help</a>
+              </div>
+            </div>
+        </div>
+
+        <div class="xl:flex lg:flex-col md:flex-col max-md:flex-col xl:flex-row  ">
+          <form action="" class="searchwala max-md:py-10 max-md:px-5 max-sm:px-0 md:py-10 md:px-5 max-sm:w-full max-lg:w-full  md:w-96 max-md:w-96 h-20 relative flex md:mr-2  relative max-sm:absolute max-lg:absolute max-md:absolute max-md:top-40 max-lg:top-40 max-sm:top-28 ">
+            <input type="search" size="45" autocomplete="off" name="search" class="absolute max-sm:w-full  p-1 max-sm:border max-sm:border-black outline-none max-sm:bg-transparent bg-white border border-black"> <label for="search" class="right-0 absolute p-1 opacity-60 font-light max-sm:text-black">SEARCH</label>
+          </form>
+        <div class="lg:ml-10 md:ml-10 max-sm:w-60 max-md:w-72 w-56  h-20 text-black  py-10 px-2 flex justify-around  relative max-lg:hidden"> 
+          <a href="/user/cart">Cart <%if(cart>0){%>
+                 <span class="font-[serif]">(<%=cart%>)</span>
+          <%}%> </a>
+          <a href="">News</a>
+          <a href="">Help</a>
+        </div>
+        </div>
+       
+    </div>
+  
+  <div class="products translate-y-52 max-lg:translate-y-60 flex flex-wrap  max-w-content h-96  border-t border-black ">
+         <%products.forEach(function(product){%>
+
+           <div class="product lg:w-1/6 md:w-1/4 max-sm:w-1/2 relative   max-sm:min-w-44  min-w- h-full  border-b border-r border-black">
+            <a href="/product/<%=product._id%>" class="">
+               <img class="w-full h-5/6 object-cover g-red-300 " src="/images/uploads/<%=product.image%>" alt="">
+            </a>
+            <div class="h-1/6 text-sm text-extralight p-2 flex w-full justify-between">
+              <a href="/product/<%=product._id%>" class="truncate">
+                <h1><%if(product.name.length>23){ var name = product.name.slice(0,26)+"..."} else{var name=product.name}%><%=name%></h1>
+                <h1>BDT  <span class="font-[sans-serif]"><%=product.price%></span></h1>
+              </a>
+              <a href="/user/cart/<%=product._id%>" class="bg-white  ">
+                <button class="cart-btn font-bold " title="Add To Cart" id="<%=product._id%>" ><i class="ri-shopping-cart-line"></i></button>
+               </a>
+            </div>
+           </div>
+
+           <%})%>
+  </div>
+
+  <div class="searchbox absolute flex flex-col items-center bg-white gap-4 max-sm:w-full  lg:top-20 lg:w-96 lg:right-64 lg:gap-4   max-sm:top-48  overflow-y-hidden hidden z-20">      
+  </div>
+  <script src="/javascripts/collection.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="font-['helvetica_now_display']  text-black h-screen w-full">
+
+      <nav class="pt-10 px-5 tracking-tighter flex justify-between w-full items-center ">
+        <h1 class="text-3xl ml-5">Shop.</h1>
+        <div class="right flex gap-20 mr-20">
+            <div class="first flex gap-5">
+                <a class= "text-lg" href="/user/home">Home</a>
+                <a class= "text-lg" href="">Products</a>
+            </div>
+            <div class="second flex gap-5">
+                <a class="text-lg" href="/user/cart">Cart <% if(cart>0){ %>
+                                (<%=cart%>)
+               <% } %> </a> 
+                <a class="text-lg" href="">My account</a>
+                <a class="text-lg" href="/user/logout">logout</a>
+            </div>
+        </div>
+      </nav>
+      <div class="line w-full h-0.5 bg-stone-500 mt-2"></div>
+      
+      <div class="container flex w-full h-5/6">
+        <div class="sidebar w-1/6 h-5/6  mt-4 ml-5 pt-5 px-5 flex flex-col items-start justify-between " >
+            <div class="portion flex flex-col items-start gap-10 ">
+                <div class="select ">
+                    <h1 class="inline-block text-2xl">sort by:</h1>
+                    <select name="sortby" id="sortby" class="text-lg p-2 rounded-md outline-none font-medium" style="box-shadow: 1px 1px 10px -6px black;">
+                        <option value="popular">Popular</option>
+                        <option value="newest">Newest</option>
+                        <option value="price">Price</option>
+                    </select>
+                </div>
+                <div class="">
+                    <a class="block text-lg text-stone-600" href="">New Collection</a>
+                    <a class=" text-lg block text-stone-600" href="">All Products</a>
+                    <a  class=" text-lg block text-stone-600" href="">Discounted Products</a>
+                </div>
+            </div>
+            <div class="">
+               <h1 class="text-xl">Filter By:</h1>
+                <a class=" text-lg block text-stone-600" href="">Availability</a>
+                <a  class=" text-lg block text-stone-600" href="">Discount</a>
+            </div>  
+      </div>
+
+      <div class="products w-full   mt-9  flex flex-wrap gap-5 ">
+        <% products.forEach(function(product){ %>
+             <div  class="basis-48 bg-[<%=product.bgcolor%>] h-1/2 min-w-48 min-h-60 relative flex flex-col justify-between rounded-md">
+               <a href="/product/<%=product._id%>" class="image h-4/6 w-4/6 relative px-2 py-2 ">
+                 <img class=" h-full w-full  object-cover ml-8 " src="/images/uploads/<%= product.image %>" alt="">
+               </a>
+
+            <div class="image h-2/6 w-full relative p-2 flex justify-between items-center bg-[<%=product.panelcolor%>] rounded-md">
+             
+                <a href="/product/<%=product._id%>">
+                 <h1 class="text-xl text-[<%= product.textcolor%>]"><%=product.name%></h1>
+                 <h1 class="text-lg text-[<%= product.textcolor%>] ">&#2547 <%=product.price%></h1>
+                </a>
+
+               <a href="/user/cart/<%=product._id%>" class="bg-white px-2 rounded-3xl ">
+                <button class="cart-btn font-bold text-xl" id="<%=product._id%>" >+</button>
+               </a>
+
+            </div>
+        </div>
+
+       <% })%>
+      
+
+   </div>
+
+     
+
+ <script src="/javascripts/shop.js" ></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Prdouct</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="font-['helvetica_now_display']  text-black h-screen w-full">
+
+      <nav class="pt-10 px-5 tracking-tighter flex justify-between w-full items-center">
+        <h1 class="text-3xl ml-5">Admin Panel.</h1>
+        <div class="right flex gap-20 mr-20">
+            <div class="first flex gap-5">
+                <a class= "text-lg" href="/owner/dashboard">Home</a>
+                <a class= "text-lg" href="">Products</a>
+            </div>
+            <div class="second flex gap-5">
+                <a class="text-lg" href="">My account</a>
+            </div>
+        </div>
+      </nav>
+      <div class="line w-full h-0.5 bg-stone-500 mt-2"></div>
+      
+      <div class="container flex w-full h-5/6">
+         
+        <div class="sidebar w-1/6 h-5/6  mt-4 ml-5 pt-5 px-5 flex flex-col items-start justify-between " >
+           
+            <div class="portion flex flex-col items-start gap-10 ">
+                <div class="">
+                    <a class=" text-lg block text-stone-600" href="/owner/dashboard">All Products</a>
+                    <a class=" text-lg block text-stone-600" href="https://colorhunt.co/">Color Palate</a>
+                
+                </div>
+            </div>  
+            <div>
+                <a class=" text-lg block text-stone-600" href="/owner/logout">logout</a>
+            </div>
+      </div>
+
+      <div class="w-full ">
+        <h1 class="text-3xl mt-9 block tracking-tighter">Update Product</h1>
+        <div class="line  w-5/6 h-0.5 bg-stone-300 mt-2"></div>
+        <h1 class="text-2xl mt-3 block tracking-tighter mb-5 ml-5">Product Details</h1>
+      
+        <form action="/product/update/<%=product._id%>" method="post" enctype="multipart/form-data" class="ml-5">   
+            <p class="inline-block text-xl mr-4 ">Product Image</p>
+            <label for="image" class="bg-black py-2 px-3 w-1/6 hover:text-stone-200 text-white text-lg mb-5 rounded-2xl "><%=product.image%></label>
+             <div class=" w-20 h-20  mb-2"> <img class="h-full w-full object-fit" src="/images/uploads/<%=product.image%>" alt=""> </div>
+            <input name="image" id="image"  type="file" autocomplete="off" class="hidden" >
+            <input name="name" value="<%=product.name%>" type="text" autocomplete="off" placeholder="Product Name" class="bg-stone-200 block  p-2 w-96 text-xl mb-4 outline-none rounded-md border-none" >
+            <input name="price" value="<%=product.price%>" type="text" autocomplete="off" placeholder="Product Price" class="bg-stone-200 mr-10  p-2 w-40 text-xl mb-4 outline-none rounded-md border-none" >
+            <input name="discount" value="<%=product.discount%>" type="text" autocomplete="off" placeholder="Discount Price" class="bg-stone-200  p-2 w-40 text-xl mb-4 outline-none rounded-md border-none" >
+            <h1 class="text-2xl mt-3 block tracking-tighter mb-5">Panel Details</h1>
+            <input name="bgcolor" value="<%=product.bgcolor%>" type="text" autocomplete="off" placeholder="Category" class="bg-stone-200 mr-3  p-2 w-40 text-xl mb-4 outline-none rounded-md border-none" >
+            <input name="panelcolor" value="<%=product.panelcolor%>" type="text" autocomplete="off" placeholder="Man/woman/kids" class="bg-stone-200  p-2 w-40 text-xl mb-4 outline-none rounded-md border-none" >
+            <input name="textcolor" value="<%=product.textcolor%>" type="text" autocomplete="off" placeholder="Description" class="bg-stone-200 block  p-2 w-40 text-xl mb-4 outline-none rounded-md border-none" >
+            <button  class="bg-black py-2 px-20 hover:text-stone-200 text-white text-xl mb-5 rounded-2xl tracking-wider font-bold">Update</button>
+        </form>
+
+      </div>
+      </div>
+      
+
+      
+
+          <script>
+            const formupload = document.querySelector("form input[type='file']"); 
+            const textdata = document.querySelector('form label')
+            formupload.addEventListener('change',  function(item){
+                
+                  textdata.innerHTML = item.target.files[0].name ;
+            })
+          </script>
+</body>
+</html>

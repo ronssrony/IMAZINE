@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Joan&display=swap" rel="stylesheet">
+</head>
+
+<body class="text-black font-['Joan'] font-light  text-black h-screen w-full relative  ">
+  <div class="fixed w-full h-96 flex justify-between max-lg:flex-col top-0 ">
+    <div class="lg:w-1/2 md:w-full min-w-fit md:h-96 max-sm:h-60 h-96 p-5 ">
+    <a href="/" class="w-full h-full relative">
+    <img class="w-3/2 h-2/5 object-cover" src="/images/bg/darklogo.png" alt="">
+    </a>
+    <div class="flex text-black gap-5 mt-2 infowala relative z-10 lg:hidden ">
+    <a class=" min-w-fit " href="/">Home</a>
+    <a class=" min-w-fit" href="/collection/man">Products</a>
+    <div class=" text-black flex gap-2 min-w-fit justify-around relative ">
+    <a href="/user/cart">Cart <%if(cart>0){%>
+    <span class="font-[serif]">(<%=cart%>)</span>
+    <%}%> </a>
+    <a href="text-black" class="">My account</a>
+    <a href="/user/logout" class="">Logout</a>
+    </div>
+    </div>
+    </div>
+    
+    
+    
+    <div class="lg:ml-10 md:ml-10 max-sm:w-60 max-md:w-96 w-96 h-20 text-black py-10 px-2 flex justify-around relative max-lg:hidden">
+    <a href="/">Home</a>
+    <a href="/collection/man">Products</a>
+    <a href="/user/cart">Cart <%if(cart>0){%>
+    <span class="font-[serif]">(<%=cart%>)</span>
+    <%}%> </a>
+    <a href="">News</a>
+    <a href="">Help</a>
+    </div>
+    </div>
+    
+
+    <div class=" container   translate-y-40 max-xl:translate-y-48 max-lg:translate-y-60 max-sm:translate-y-32 max-sm:w-full  md:w-full relative w-full max-lg:flex-col max-lg:items-center max-lg:justify-center  md:flex md:justify-center gap-10 ">
+    
+      <div class="products bg-white md:w-2/5 sm:w-full max-sm:w-full max-md:w-full  md:min-w-[500px]  mt-9  border border-black">
+       <%if(products.size===0){%>
+        <h1 class="text-center text-3xl max-lg:translate-y-0  lg:translate-y-36">Empty Cart</h1>
+      <% }else{ %>
+
+        <% products.forEach(function(product){ %>
+          <div  class="basis-48 bg-white  h-20 min-w-fit min-h-32 relative flex justify-around mb-5   border-b border-stone-200">
+            <a href="/product/<%=product._id%>" class="image h-5/6 w-2/6 lg:w-1/4 relative px-2 mt-2 ">
+              <img class=" w-full h-full object-center object-cover  " src="/images/uploads/<%= product.image %>" alt="">
+            </a>
+           <p class="hidden product_id"><%=product._id%></p>
+         <div class="image h-3/2  w-4/6 relative self-center p-2 flex justify-between border-b border-black  items-center">
+            <div >
+             <a href="/product/<%=product._id%>">
+               <h1 class="min-w-fit "><%=product.name%></h1>
+               <h1 class="  ">&#2547 <span class="font-[serif]"><%=product.price%></span></h1>
+              </a>
+            </div>                                                                                                                       
+            
+              
+             <div class="volume min-w-fit gap-2 relative  w-1/6 h-1/2 flex justify-between  items-center">
+             <button class=" minus text-2xl ">-</button>  <button class="value quantity text-xl font-[serif]  "><%=volume[product._id]%></button>  <button class="plus text-xl">+</i></button>
+             </div>
+
+
+            
+              
+   
+             <div class="absolute flex flex-row-reverse justify-between w-full items-center py-2 top-14">
+               <a href="/user/cart/item/remove/<%=product._id%>"><i class="ri-delete-bin-2-line pr-4 text-xl"></i> </a>
+               <h1 class="min-w-fit text-sm block">&#2547 <span class=" font-[serif]"><%=volume[product._id]*product.discount%></span> OFF</h1>
+             </div>
+
+             <h1 class="discountpp hidden ">&#2547 <span><%=product.discount%></span></h1>
+
+         </div>
+     </div>
+    <% })%>
+      <%}%>
+
+          
+      
+      
+   </div>
+
+
+   <div class="details font-['serif'] text-lg mt-20 max-sm:mt-10  min-w-80 sm:ml-10 max-sm:ml-10   flex flex-col ">
+    <h1 class="text-3xl tracking-tighter mb-5 ">Price Breakdown</h1>
+    <div class="flex items-center  mb-5">
+    <div class="flex flex-col max-sm:w-40 w-56  ml-2 ">
+    <h1 class="">Total Items</h1>
+    <h1 class="">Total MRP</h1>
+    <h1 class="">Discount on MRP</h1>
+    <h1 class="">Shipping Fee</h1>
+    <h1 class="">Platform Fee</h1>
+    </div>
+    <div class="flex flex-col max-sm:20 w-36 text-lg font-[serif]">
+    <h1 class=""><span class="text-sm"></span> <span class="ttlitem"><%=cart%></span></h1>
+    <h1 class=""><span class="text-sm">&#2547 </span> <span class="ttlprice"><%=totalprice%></span> </h1>
+    <h1 class=""><span class="text-sm">&#2547 </span> <span class="ttldiscount"><%=totaldiscount%></span></h1>
+    <h1 class=""><span class="text-sm">&#2547 </span><span class="ttlshipping"><%= Math.ceil( totalshipping)%></span> </h1>
+    <h1 class=""><span class="text-sm">&#2547 </span><span class="ttlplatform"><%=Math.ceil(totalplatform)%></span> </h1>
+    </div>
+    </div>
+    
+    <div class="bg-black w-4/5 h-[1px] mb-5"></div>
+    
+    <div class="md:text-2xl lg:text-3xl sm:text-xl flex mb-5 tracking-tighter">
+    <h1 class="w-56 max-sm:w-40">Total Fee</h1>
+    <h1 class=" ml-2"><span class="text-lg">&#2547 </span><span class="totalfee font-[serif]"><%= totalprice +Math.ceil( totalshipping) + Math.ceil(totalplatform) - totaldiscount%></span> </h1>
+    </div>
+    <h1 class="py-1 px-4 w-4/5 border border-black text-xl text-center checkout cursor-pointer active:border-stone-400 text-white bg-black">Place Order</h1>
+    
+    </div>
+
+      
+  
+   </div> 
+
+
+   
+
+    
+
+ <script src="/javascripts/cart.js" ></script>
+</body>
+</html>

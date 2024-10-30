@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%=product.name%></title>
+  <link rel="icon" type="image/x-icon" href="/images/favicon/favicon.ico">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Joan&display=swap" rel="stylesheet">
+</head>
+
+<body class="font-['Joan']  text-black w-full  ">
+  <div class="fixed w-full h-60  flex max-lg:flex-col  flex  max-sm:z-10 ">
+    <div class="lg:w-1/2 md:w-full min-w-fit md:h-96  max-sm:h-60  h-96 p-5  ">
+        <a href="/" class="w-full h-full relative">
+            <img class="w-3/2 h-2/5 object-cover" src="/images/bg/darklogo.png" alt="">
+        </a>
+        <div class="flex text-black gap-5 mt-2 infowala relative  ">
+            
+            <div class="   text-black  flex gap-2 min-w-fit justify-around  relative lg:hidden  "> 
+                <a href="/user/cart">Cart <%if(cart>0){%>
+                    <span class="font-[serif]">(<%=cart%>)</span>
+             <%}%> </a>
+            <a href="text-black" class="">News</a>
+            <a href="text-black" class="">Help</a>
+          </div>
+        </div>
+    </div>
+
+    <div class="xl:flex lg:flex-col md:flex-col max-md:flex-col xl:flex-row  ">
+      <div class="searchwala max-md:py-10 max-md:px-5 max-sm:px-0 md:py-10 md:px-5 max-sm:w-full max-lg:w-full  md:w-96 max-md:w-96 h-20 relative flex md:mr-2  relative max-sm:absolute max-lg:absolute max-md:absolute max-md:top-40 max-lg:top-40 max-sm:top-28 max-lg:hidden ">
+        <input type="search" size="45" autocomplete="off" name="search" class="absolute max-sm:w-full  p-1 max-sm:border max-sm:border-black outline-none max-sm:bg-transparent bg-white border border-black"> <label for="search" class="right-0 absolute p-1 opacity-60 font-light max-sm:text-black">SEARCH</label>
+    </div>
+    <div class="lg:ml-10 md:ml-10 max-sm:w-60 max-md:w-72 w-56  h-20 text-black  py-10 px-2 flex justify-around  relative max-lg:hidden"> 
+      <a href="/user/cart">Cart <%if(cart>0){%>
+             <span class="font-[serif]">(<%=cart%>)</span>
+      <%}%> </a>
+      <a href="">News</a>
+      <a href="">Help</a>
+    </div>
+    </div>
+   
+</div>
+      
+      <div class="container h-screen  min-w-full max-lg:flex-col  xl:flex-row max-xl:flex-row max-md:gap-0 flex max-xl:justify-between xl:justify-between lg:justify-center max-lg:justify-center    items-center  lg:translate-y-24  max-sm:translate-y-72 max-md:translate-y-96 md:translate-y-10  gap-10 p-5 max-sm:p-0 ">
+
+      <div class="flex w-full     max-md:flex-col max-md:gap-0 justify-center lg:ml-10 items-center  gap-10 mb-10">
+  
+        <div class="products  flex flex-wrap min-w-80 lg:ml-5   border border-black  z-10 ">
+      
+ 
+          <div class="product w-full h-96   border-black">
+            <h1 class="productid hidden"><%=product._id%></h1>
+           <a href="/product/<%=product._id%>" class="">
+              <img class="w-full h-5/6 object-cover g-red-300 " src="/images/uploads/<%=product.image%>" alt="">
+           </a>
+           <div class="h-1/6 text-sm text-extralight p-2 flex w-full justify-between">
+             <a href="/product/<%=product._id%>">
+               <h1><%if(product.name.length>23){ var name = product.name.slice(0,26)+"..."} else{var name=product.name}%><%=name%></h1>
+               <h1>BDT  <span class="font-[sans-serif]"><%=product.price%></span></h1>
+             </a>
+             <div class="volume bg-white px-2 rounded-3xl w-2/6 ">
+              <button class=" minus font-bold text-2xl w-1/6">-</button> <button class="value font-bold text-xl ml-3 font-['serif']">01</button><button class=" plus font-bold text-xl ml-4 w-1/6">+</button>
+            </div>
+           </div>
+          </div>
+ </div>
+
+      <div class="details font-['serif'] text-lg mt-20 max-sm:mt-10  min-w-80 sm:ml-10   flex flex-col   ">
+  
+        <div class="flex items-center   mb-5">
+         <div class="flex flex-col max-sm:w-40 w-56 lg:ml-2 text-lg">
+             <h1 class="">Total MRP</h1>
+              <h1 class="">Discount on MRP</h1>
+              <h1 class="">Shipping Fee</h1>
+              <h1 class="">Platform Fee</h1>
+         </div>
+         <div class="flex flex-col max-sm:20 w-36 text-lg">
+          <h1 class=""><span class="text-sm">&#2547 </span> <span class="ttlprice"><%=product.price%></span> </h1>
+          <h1 class=""><span class="text-sm">&#2547 </span> <span class="ttldiscount"><%=product.discount%></span></h1>
+          <h1 class=""><span class="text-sm">&#2547 </span><span class="ttlshipping"><%= Math.ceil( product.price*.001)%></span> </h1>
+          <h1 class=""><span class="text-sm">&#2547 </span><span class="ttlplatform"><%=Math.ceil(product.price*.0001)%></span> </h1>
+         </div>
+        </div>
+
+       <div class="bg-stone-400  h-[2px] mb-5"></div>
+
+       <div class="text-2xl flex  mb-5 tracking-tighter">
+          <h1 class="w-56 max-sm:w-40">Total Fee</h1>
+          <h1 class="ml-2"><span class="text-lg ">&#2547 </span><span class="ttlfee"><%= product.price + Math.ceil(product.price *.0001) + Math.ceil(product.price *.001) - product.discount%></span></h1>
+       </div>
+       <a href="" class=" checkout py-2 px-5 bg-black text-white text-lg rounded text-center">Place Order</a>
+
+      </div>
+
+
+    
+       </div>
+
+      <div class="lg:mt-10  self-start relative  ">
+       <h1 class="text-lg">You May Interested In</h1>
+     
+        
+        <div class="products    flex lg:flex-col max-sm:flex-wrap   self-start   h-72   border-t border-black">
+          <%interest.forEach((product)=>{%>
+           
+            <div class="preffer min-w-56   relative   max-sm:min-w-44 max-sm:w-1/2 h-full  border-b border-r border-l border-black">
+             <a href="/product/<%=product._id%>" class="">
+                <img class="w-full h-5/6 object-cover  " src="/images/uploads/<%=product.image%>" alt="">
+             </a>
+             <div class="h-1/6 text-sm text-extralight p-2 flex w-full justify-between">
+               <a href="/product/<%=product._id%>">
+                 <h1><%if(product.name.length>23){ var name = product.name.slice(0,26)+"..."} else{var name=product.name}%><%=name%></h1>
+                 <h1>BDT  <span class="font-[sans-serif]"><%=product.price%></span></h1>
+               </a>
+               <a href="/user/cart/<%=product._id%>" class="bg-white  ">
+                 <button class="cart-btn font-bold " title="Add To Cart" id="<%=product._id%>" ><i class="ri-shopping-cart-line"></i></button>
+                </a>
+             </div>
+            </div>
+
+          <%})%>
+  
+         
+  </div>
+
+
+
+      </div>
+
+     
+      </div>
+
+      
+
+       
+       
+     
+   <script src="/javascripts/product.js"></script>
+</body>
+</html>
