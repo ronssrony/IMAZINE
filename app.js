@@ -24,7 +24,7 @@ const server = http.createServer(app) ;
 const socket = require("./services/socketio")
 
 socket.init(server) 
-const allowOrigin = ['http://localhost:5173','https://imazineblue.onrender.com']
+const allowOrigin = ['http://localhost:5173','https://imazine.netlify.app']
 const corsOptions = {
   origin: (origin, callback) => {
     if (allowOrigin.includes(origin) || !origin) {

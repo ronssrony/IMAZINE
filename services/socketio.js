@@ -5,7 +5,7 @@ let io;
 module.exports = {
 
     init: function (server) {
-     const allowOrigin = ['http://localhost:5173','https://imazineblue.onrender.com']
+     const allowOrigin = ['http://localhost:5173','https://imazine.netlify.app']
         io = socketIO(server, {  
             cors:{
                 origin:(origin, callback) => {
