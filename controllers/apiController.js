@@ -18,6 +18,7 @@ const { JSONCookie } = require('cookie-parser');
 const socket = require('../services/socketio');
 const imazinActivityModel = require('../models/imazinActivity-model');
 const { subscribe } = require('../routes/userRoutes');
+const { query } = require('express');
 
 
 const ExecSubscribe =async(id)=>{
@@ -54,8 +55,37 @@ module.exports.getallproducts = async function(req, res){
     await client.set('all:products',JSON.stringify(allproducts) )
     res.status(200).json(allproducts)
 }
-  
+
+module.exports.LoginwithSocial = async function (name , email , photo){
+  const user = await imaginistModel.findOne({email});
+           
+  if(user){
+      const token = jwt.sign({email: user.email} , `${process.env.JWT_KEY}`);  
+      user.token = token ;
+      return user 
+     }  
+
+   else {
+   const user = await imaginistModel.create({
+      email: email,
+      name: name,
+      photo:photo
+       });
+     const token = jwt.sign({email: user.email} , `${process.env.JWT_KEY}`);  
+     user.token = token ;
+     return user 
+   }  
+}
+
+module.exports.snapLogin= async function (req, res){
+  const  user = jwt.verify(req.cookies.ronss , process.env.JWT_KEY)
+  const imaginist = await imaginistModel.findOne({email:user.email}) ;
+  res.status(200).json({ imazinistId: imaginist._id });
+
+ 
+}
 module.exports.imaginistLogin = async function(req, res) {
+   
   const { email, password } = req.body;
  
   
@@ -142,7 +172,7 @@ module.exports.middleware = async function(req, res){
       const user  = await imaginistModel.findOne({email:tokenuser.email}); 
       if(!user) return res.status(404).json({message:'User not logged in'})
         else {
-        res.status(200).json({message:'valid'}); 
+        res.status(200).json({imazineId: user._id}); 
     }
      }
      catch(err){

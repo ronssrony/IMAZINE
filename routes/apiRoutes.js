@@ -1,12 +1,13 @@
 const express = require('express') ; 
 const router = express.Router() ; 
-const {getallproducts , imaginistLogin ,MessageNotify, myNotification,  choicelist , middleware, profile , updateprofile ,Flexfeed, Follow , myfollowers ,Unfollow , Postfeed , dope ,undope, createreview, fetchReview, logout ,Viewprofile, mymessages ,fetchuserid, Chatpeople, receiverprofile, Message ,Receivemessage ,Activestatus  ,UploadStories , CreatePost ,DeletePost} = require('../controllers/apiController')
+const {getallproducts ,snapLogin, imaginistLogin ,MessageNotify, myNotification,  choicelist , middleware, profile , updateprofile ,Flexfeed, Follow , myfollowers ,Unfollow , Postfeed , dope ,undope, createreview, fetchReview, logout ,Viewprofile, mymessages ,fetchuserid, Chatpeople, receiverprofile, Message ,Receivemessage ,Activestatus  ,UploadStories , CreatePost ,DeletePost} = require('../controllers/apiController')
 const upload = require('../utils/multer')
 
 
 router.get('/products', getallproducts)   
 router.get('/choicelist/:id',choicelist)
 router.post('/login' ,imaginistLogin )
+router.post('/slogin',snapLogin)
 router.get('/middleware',middleware)
 router.get('/profile',profile)
 router.post('/profile/:id',upload.single('image'),updateprofile)

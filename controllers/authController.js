@@ -7,8 +7,14 @@ module.exports.googleAuthenticate = passport.authenticate('google',{
 })
 
 module.exports.googlecallbackURL = function(req, res){
-    
- res.status(200).cookie("ronss",req.user.token).redirect('/');
+
+ res.cookie("ronss",req.user.token, {
+    httpOnly: true,
+    secure: true,
+    sameSite: 'None',
+});
+
+res.status(200).redirect(`https://imazine.netlify.app`);
 
 }
 
@@ -18,7 +24,14 @@ module.exports.facebookAuthenticate = passport.authenticate('facebook',{
 })
 
 module.exports.facebookcallbackURL = function(req, res){
-    res.status(200).cookie("ronss",req.user.token).redirect('/')
+    res.cookie("ronss",req.user.token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'None',
+    });
+    
+    res.status(200).redirect(`https://imazine.netlify.app`);
+    
 }
 
 module.exports.twitterAuthenticate = passport.authenticate('twitter',{
